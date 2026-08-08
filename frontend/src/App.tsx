@@ -5,6 +5,8 @@ import Login from "./pages/Login";
 import MyFeedback from "./pages/MyFeedback";
 import GiveFeedback from "./pages/GiveFeedback";
 import HRTracker from "./pages/HRTracker";
+import Forbidden from "./pages/Forbidden";
+import NotFound from "./pages/NotFound";
 
 function ProtectedLayout() {
   const { user, loading } = useAuth();
@@ -15,13 +17,13 @@ function ProtectedLayout() {
 
 function RequireManager({ children }: { children: JSX.Element }) {
   const { user } = useAuth();
-  if (!user?.isManager) return <Navigate to="/" replace />;
+  if (!user?.isManager) return <Forbidden requiredRole="manager" />;
   return children;
 }
 
 function RequireHR({ children }: { children: JSX.Element }) {
   const { user } = useAuth();
-  if (!user?.isHR) return <Navigate to="/" replace />;
+  if (!user?.isHR) return <Forbidden requiredRole="HR" />;
   return children;
 }
 
@@ -47,8 +49,8 @@ export default function App() {
             </RequireHR>
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Route>
-      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
