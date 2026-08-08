@@ -9,10 +9,7 @@ function currentPeriod(): string {
   return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
 }
 
-// Full org chart for the HR lead's own company: every manager -> direct
-// report edge. This is the same edge the feedback-submission check is built
-// on, so "who reports to whom" can never drift out of sync with "who owes
-// feedback to whom".
+// Returns the full manager/report org chart for the HR lead's company.
 hrRouter.get("/org", requireAuth, requireHR, async (req: AuthedRequest, res) => {
   const users = await prisma.user.findMany({
     where: { companyId: req.user!.companyId },
@@ -22,10 +19,7 @@ hrRouter.get("/org", requireAuth, requireHR, async (req: AuthedRequest, res) => 
   res.json(users);
 });
 
-// For every manager -> direct-report edge in the company, has feedback been
-// submitted for the given period? Built directly off the (employeeId, period)
-// unique constraint on Feedback, so "missing" isn't inferred from absence of
-// activity — it's a clean anti-join.
+// Returns submission status per manager/report pair for a given period.
 hrRouter.get("/tracker", requireAuth, requireHR, async (req: AuthedRequest, res) => {
   const period = typeof req.query.period === "string" && req.query.period ? req.query.period : currentPeriod();
 
@@ -61,8 +55,7 @@ hrRouter.get("/tracker", requireAuth, requireHR, async (req: AuthedRequest, res)
   res.json({ period, total: rows.length, missingCount: missing.length, rows });
 });
 
-// Distinct periods that have at least one submission, for populating a
-// period picker in the HR app (plus the current month, always offered).
+// Returns every period that has feedback, plus the current period.
 hrRouter.get("/periods", requireAuth, requireHR, async (req: AuthedRequest, res) => {
   const feedbacks = await prisma.feedback.findMany({
     where: { companyId: req.user!.companyId },

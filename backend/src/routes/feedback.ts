@@ -12,7 +12,7 @@ feedbackRouter.get("/parameters", requireAuth, async (_req, res) => {
   res.json(parameters);
 });
 
-// People I directly manage — the roster I can give feedback to.
+// Returns the caller's direct reports.
 feedbackRouter.get("/me/reports", requireAuth, async (req: AuthedRequest, res) => {
   const reports = await prisma.user.findMany({
     where: { managerId: req.user!.id },
@@ -22,7 +22,7 @@ feedbackRouter.get("/me/reports", requireAuth, async (req: AuthedRequest, res) =
   res.json(reports);
 });
 
-// My own feedback history, across all months, for the "scores over time" view.
+// Returns the caller's own feedback history across all months.
 feedbackRouter.get("/me/feedback", requireAuth, async (req: AuthedRequest, res) => {
   const feedbacks = await prisma.feedback.findMany({
     where: { employeeId: req.user!.id },
@@ -49,9 +49,7 @@ const submitSchema = z.object({
     .min(1),
 });
 
-// A manager submits (or edits, within the same month) feedback for one of
-// their direct reports. Authorization is enforced structurally: the target
-// employee's managerId must equal the caller's id — not a role check.
+// Creates or updates a manager's feedback submission for one direct report.
 feedbackRouter.post("/feedback", requireAuth, async (req: AuthedRequest, res) => {
   const parsed = submitSchema.safeParse(req.body);
   if (!parsed.success) {
@@ -108,8 +106,7 @@ feedbackRouter.post("/feedback", requireAuth, async (req: AuthedRequest, res) =>
   res.status(existing ? 200 : 201).json(feedback);
 });
 
-// View one employee's feedback history — allowed for the employee themself,
-// their direct manager, or HR within the same company.
+// Returns one employee's feedback history for the employee, their manager, or HR.
 feedbackRouter.get("/feedback/:employeeId", requireAuth, async (req: AuthedRequest, res) => {
   const { employeeId } = req.params;
   const employee = await prisma.user.findUnique({ where: { id: employeeId } });

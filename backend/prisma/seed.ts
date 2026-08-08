@@ -41,7 +41,7 @@ const COMMENTS: Record<string, Record<number, string[]>> = {
   },
 };
 
-// Small deterministic PRNG so re-running the seed produces the same data.
+// Deterministic PRNG so re-running the seed produces the same data.
 function makeRng(seed: number) {
   let s = seed;
   return () => {
@@ -50,20 +50,24 @@ function makeRng(seed: number) {
   };
 }
 
+// Picks a pseudo-random element from an array using the given RNG.
 function pick<T>(rng: () => number, arr: T[]): T {
   return arr[Math.floor(rng() * arr.length) % arr.length];
 }
 
+// Generates a score and matching comment for one parameter.
 function scoreAndComment(rng: () => number, parameterKey: string, favorable: boolean) {
   const score = favorable ? (rng() < 0.6 ? 5 : 4) : rng() < 0.5 ? 4 : 3;
   const comment = pick(rng, COMMENTS[parameterKey][score]);
   return { score, comment };
 }
 
+// Hashes a plaintext password for storage.
 async function hash(pw: string) {
   return bcrypt.hash(pw, 10);
 }
 
+// Resets the database and seeds both demo companies with users and feedback.
 async function main() {
   console.log("Resetting existing data...");
   await prisma.feedbackScore.deleteMany();
@@ -80,15 +84,15 @@ async function main() {
 
   const passwordHash = await hash(DEMO_PASSWORD);
 
-  // Trailing 4 calendar months ending on the current month, oldest first.
-  const now = new Date(2026, 7, 8); // 2026-08-08, matches the environment's current date
+  const now = new Date(2026, 7, 8);
   const periods: string[] = [];
   for (let i = 3; i >= 0; i--) {
     const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
     periods.push(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`);
   }
-  const [p0, p1, p2, currentPeriod] = periods; // e.g. 2026-05, 06, 07, 08(current, in progress)
+  const [p0, p1, p2, currentPeriod] = periods;
 
+  // Creates one manager's feedback submission (all 5 parameters) for one employee/period.
   async function submitFeedback(opts: {
     companyId: string;
     employeeId: string;
@@ -115,14 +119,6 @@ async function main() {
     }
   }
 
-  // ---------------------------------------------------------------------
-  // Company 1: Ashoka Textiles
-  //   Ananya (COO, no manager)
-  //     -> Rohan (VP Operations)
-  //          -> Priya (Team Lead)
-  //               -> 6 team members
-  //   Kavita: HR lead, reports to Ananya, isHR = true.
-  // ---------------------------------------------------------------------
   console.log("Seeding Ashoka Textiles...");
   const ashoka = await prisma.company.create({
     data: { name: "Ashoka Textiles", slug: "ashoka-textiles" },
@@ -196,8 +192,6 @@ async function main() {
     );
   }
 
-  // Ananya -> Rohan: submitted for p0, p1, p2; current month still pending
-  // (this is what Kavita's tracker should surface as missing).
   let seedCounter = 1;
   for (const period of [p0, p1, p2]) {
     await submitFeedback({
@@ -210,7 +204,6 @@ async function main() {
     });
   }
 
-  // Rohan -> Priya: submitted every month including current (Rohan is on top of it).
   for (const period of periods) {
     await submitFeedback({
       companyId: ashoka.id,
@@ -222,13 +215,10 @@ async function main() {
     });
   }
 
-  // Priya -> her 6 reports: fully submitted for the first three months, but
-  // for the current (in-progress) month she's only gotten to half her team —
-  // exactly the gap Kavita's tracker exists to catch.
   for (let idx = 0; idx < priyaTeam.length; idx++) {
     const member = priyaTeam[idx];
     for (const period of [p0, p1, p2]) {
-      const favorable = !(idx % 3 === 0 && period === p1); // one person dips one month
+      const favorable = !(idx % 3 === 0 && period === p1);
       await submitFeedback({
         companyId: ashoka.id,
         employeeId: member.id,
@@ -239,7 +229,6 @@ async function main() {
       });
     }
     if (idx < 3) {
-      // only half the team done for the current, still-open month
       await submitFeedback({
         companyId: ashoka.id,
         employeeId: member.id,
@@ -251,11 +240,6 @@ async function main() {
     }
   }
 
-  // ---------------------------------------------------------------------
-  // Company 2: Bright Path Consulting
-  //   Sameer (Founder, no manager) -> 8 direct reports, no middle layer.
-  //   Leela: HR lead, also one of the founder's direct reports, isHR = true.
-  // ---------------------------------------------------------------------
   console.log("Seeding Bright Path Consulting...");
   const brightPath = await prisma.company.create({
     data: { name: "Bright Path Consulting", slug: "bright-path-consulting" },
@@ -299,12 +283,10 @@ async function main() {
     );
   }
 
-  // Sameer -> all 8: fully submitted for the first three months. For the
-  // current month only 5 of 8 are done, again leaving a visible gap for HR.
   for (let idx = 0; idx < brightPathTeam.length; idx++) {
     const member = brightPathTeam[idx];
     for (const period of [p0, p1, p2]) {
-      const favorable = !(idx === 4 && period === p0); // one dip for trend variety
+      const favorable = !(idx === 4 && period === p0);
       await submitFeedback({
         companyId: brightPath.id,
         employeeId: member.id,
