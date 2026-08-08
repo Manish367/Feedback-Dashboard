@@ -21,7 +21,7 @@ authRouter.post("/login", async (req, res) => {
 
   const user = await prisma.user.findUnique({
     where: { email: email.toLowerCase() },
-    include: { company: true },
+    include: { company: true, manager: true },
   });
   if (!user) {
     return res.status(401).json({ error: "Invalid credentials" });
@@ -44,6 +44,7 @@ authRouter.post("/login", async (req, res) => {
       title: user.title,
       isHR: user.isHR,
       managerId: user.managerId,
+      manager: user.manager ? { id: user.manager.id, name: user.manager.name } : null,
       isManager: reportCount > 0,
       company: { id: user.company.id, name: user.company.name, slug: user.company.slug },
     },

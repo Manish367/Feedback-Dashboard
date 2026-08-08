@@ -31,6 +31,7 @@ export default function Layout() {
           <span>
             {user.name} · {user.title ?? "—"}
           </span>
+          {user.manager && <span className="manager-tag">Manager: {user.manager.name}</span>}
           <button className="linklike" onClick={logout}>
             Sign out
           </button>

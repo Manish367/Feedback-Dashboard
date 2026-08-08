@@ -54,6 +54,16 @@ body {
   border-radius: 12px;
 }
 
+.manager-tag {
+  font-size: 12px;
+  color: var(--accent-dark);
+  background: #eef1fc;
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
 nav.tabs {
   display: flex;
   gap: 4px;
