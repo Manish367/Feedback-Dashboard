@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../lib/AuthContext";
 import { ApiError } from "../lib/api";
+import ThemeToggle from "../components/ThemeToggle";
 
 export default function Login() {
   const { user, login } = useAuth();
@@ -27,6 +28,9 @@ export default function Login() {
 
   return (
     <div className="login-shell">
+      <div style={{ position: "fixed", top: 16, right: 16 }}>
+        <ThemeToggle />
+      </div>
       <div className="login-card">
         <h1>Performance Feedback</h1>
         <p className="subtitle">One login for every company on the platform.</p>
