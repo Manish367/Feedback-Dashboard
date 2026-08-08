@@ -1,0 +1,89 @@
+<svg viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<title id="title">Ashoka Textiles organization chart</title>
+<desc id="desc">Ananya Kapoor, COO, is at the top with no manager. Rohan Mehta and Kavita Nair report to her. Priya Sharma reports to Rohan and manages six team members: Aditi Joshi, Farah Sheikh, Karan Malhotra, Neha Reddy, Suresh Pillai, and Vikram Solanki.</desc>
+<style>
+  :root {
+    --bg: #ffffff;
+    --node-bg: #f8f9fb;
+    --node-border: #d7dbe3;
+    --node-text: #1c2230;
+    --node-sub: #6b7280;
+    --line: #c7ccd6;
+    --accent-bg: #eef1fc;
+    --accent-border: #b9c3f0;
+    --accent-text: #26399a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #11151f;
+      --node-bg: #1b2130;
+      --node-border: #333c52;
+      --node-text: #e8eaf0;
+      --node-sub: #9aa3b5;
+      --line: #3a4258;
+      --accent-bg: #232c4a;
+      --accent-border: #45538c;
+      --accent-text: #b7c2ff;
+    }
+  }
+  text { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .name { font-size: 13px; font-weight: 700; fill: var(--node-text); }
+  .sub { font-size: 11px; fill: var(--node-sub); }
+  .caption { font-size: 12px; fill: var(--node-sub); }
+  .box { fill: var(--node-bg); stroke: var(--node-border); stroke-width: 1.5; }
+  .box-accent { fill: var(--accent-bg); stroke: var(--accent-border); stroke-width: 1.5; }
+  .accent-text { fill: var(--accent-text); }
+  .conn { stroke: var(--line); stroke-width: 1.5; fill: none; }
+</style>
+
+<rect x="0" y="0" width="960" height="400" fill="var(--bg)" />
+
+<text x="480" y="20" text-anchor="middle" class="caption" font-weight="600">Ashoka Textiles — org chart</text>
+
+<path class="conn" d="M480,100 V120 M335,120 H645 M335,120 V140 M645,120 V140" />
+<path class="conn" d="M335,190 V230" />
+<path class="conn" d="M335,280 V300 M120,300 H840 M120,300 V320 M264,300 V320 M408,300 V320 M552,300 V320 M696,300 V320 M840,300 V320" />
+
+<rect class="box-accent" x="370" y="50" width="220" height="50" rx="10" />
+<text x="480" y="70" text-anchor="middle" class="name accent-text">Ananya Kapoor</text>
+<text x="480" y="86" text-anchor="middle" class="sub">COO — no manager (top)</text>
+
+<rect class="box" x="250" y="140" width="170" height="50" rx="10" />
+<text x="335" y="160" text-anchor="middle" class="name">Rohan Mehta</text>
+<text x="335" y="176" text-anchor="middle" class="sub">VP Operations</text>
+
+<rect class="box" x="560" y="140" width="170" height="50" rx="10" />
+<text x="645" y="160" text-anchor="middle" class="name">Kavita Nair</text>
+<text x="645" y="176" text-anchor="middle" class="sub">HR Lead</text>
+
+<rect class="box-accent" x="250" y="230" width="170" height="50" rx="10" />
+<text x="335" y="250" text-anchor="middle" class="name accent-text">Priya Sharma</text>
+<text x="335" y="266" text-anchor="middle" class="sub">Team Lead — manager + report</text>
+
+<rect class="box" x="55" y="320" width="130" height="50" rx="10" />
+<text x="120" y="340" text-anchor="middle" class="name">Aditi Joshi</text>
+<text x="120" y="356" text-anchor="middle" class="sub">Design Associate</text>
+
+<rect class="box" x="199" y="320" width="130" height="50" rx="10" />
+<text x="264" y="340" text-anchor="middle" class="name">Karan Malhotra</text>
+<text x="264" y="356" text-anchor="middle" class="sub">Production Assoc.</text>
+
+<rect class="box" x="343" y="320" width="130" height="50" rx="10" />
+<text x="408" y="340" text-anchor="middle" class="name">Neha Reddy</text>
+<text x="408" y="356" text-anchor="middle" class="sub">QA Associate</text>
+
+<rect class="box" x="487" y="320" width="130" height="50" rx="10" />
+<text x="552" y="340" text-anchor="middle" class="name">Suresh Pillai</text>
+<text x="552" y="356" text-anchor="middle" class="sub">Merchandiser</text>
+
+<rect class="box" x="631" y="320" width="130" height="50" rx="10" />
+<text x="696" y="340" text-anchor="middle" class="name">Farah Sheikh</text>
+<text x="696" y="356" text-anchor="middle" class="sub">Sourcing Associate</text>
+
+<rect class="box" x="775" y="320" width="130" height="50" rx="10" />
+<text x="840" y="340" text-anchor="middle" class="name">Vikram Solanki</text>
+<text x="840" y="356" text-anchor="middle" class="sub">Logistics Associate</text>
+
+<rect x="370" y="384" width="12" height="12" class="box-accent" />
+<text x="386" y="394" class="sub">= reports to someone above AND manages people below</text>
+</svg>

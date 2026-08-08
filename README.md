@@ -135,6 +135,9 @@ npm run dev   # http://localhost:5173, proxies /api to the backend
 Every seeded user's password is `password123`.
 
 **Ashoka Textiles** (3-level hierarchy)
+
+![Ashoka Textiles org chart](docs/ashoka-textiles-org-chart.svg)
+
 - `ananya.kapoor@ashokatextiles.com` — COO, top of tree
 - `rohan.mehta@ashokatextiles.com` — manages Priya, reports to Ananya
 - `priya.sharma@ashokatextiles.com` — manages 6, reports to Rohan
@@ -142,6 +145,9 @@ Every seeded user's password is `password123`.
 - 6 more under Priya, e.g. `aditi.joshi@ashokatextiles.com`
 
 **Bright Path Consulting** (flat, no middle layer)
+
+![Bright Path Consulting org chart](docs/bright-path-org-chart.svg)
+
 - `sameer.verma@brightpathconsulting.com` — Founder, manages 8 directly
 - 8 direct reports, e.g. `meera.iyer@brightpathconsulting.com`
 - `leela.krishnan@brightpathconsulting.com` — HR lead (also a direct report)

@@ -1,0 +1,81 @@
+<svg viewBox="0 0 960 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<title id="title">Bright Path Consulting organization chart</title>
+<desc id="desc">Sameer Verma, Founder, is at the top with no manager. All 8 people — Meera Iyer, Arjun Rao, Divya Menon, Kabir Singh, Ritu Bhatia, Yash Kulkarni, Ishaan Chopra, and Leela Krishnan — report directly to him, with no middle layer of management.</desc>
+<style>
+  :root {
+    --bg: #ffffff;
+    --node-bg: #f8f9fb;
+    --node-border: #d7dbe3;
+    --node-text: #1c2230;
+    --node-sub: #6b7280;
+    --line: #c7ccd6;
+    --accent-bg: #eef1fc;
+    --accent-border: #b9c3f0;
+    --accent-text: #26399a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #11151f;
+      --node-bg: #1b2130;
+      --node-border: #333c52;
+      --node-text: #e8eaf0;
+      --node-sub: #9aa3b5;
+      --line: #3a4258;
+      --accent-bg: #232c4a;
+      --accent-border: #45538c;
+      --accent-text: #b7c2ff;
+    }
+  }
+  text { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .name { font-size: 11.5px; font-weight: 700; fill: var(--node-text); }
+  .sub { font-size: 10px; fill: var(--node-sub); }
+  .caption { font-size: 12px; fill: var(--node-sub); }
+  .box { fill: var(--node-bg); stroke: var(--node-border); stroke-width: 1.5; }
+  .box-accent { fill: var(--accent-bg); stroke: var(--accent-border); stroke-width: 1.5; }
+  .accent-text { fill: var(--accent-text); }
+  .conn { stroke: var(--line); stroke-width: 1.5; fill: none; }
+</style>
+
+<rect x="0" y="0" width="960" height="300" fill="var(--bg)" />
+<text x="480" y="20" text-anchor="middle" class="caption" font-weight="600">Bright Path Consulting — org chart (flat, no middle layer)</text>
+
+<rect class="box-accent" x="370" y="45" width="220" height="50" rx="10" />
+<text x="480" y="65" text-anchor="middle" class="name accent-text">Sameer Verma</text>
+<text x="480" y="81" text-anchor="middle" class="sub">Founder — no manager (top)</text>
+
+<path class="conn" d="M480,95 V140 M78,140 H883 M78,140 V180 M193,140 V180 M308,140 V180 M423,140 V180 M538,140 V180 M653,140 V180 M768,140 V180 M883,140 V180" />
+
+<rect class="box" x="25" y="180" width="106" height="55" rx="10" />
+<text x="78" y="202" text-anchor="middle" class="name">Meera Iyer</text>
+<text x="78" y="217" text-anchor="middle" class="sub">Sr. Consultant</text>
+
+<rect class="box" x="140" y="180" width="106" height="55" rx="10" />
+<text x="193" y="202" text-anchor="middle" class="name">Arjun Rao</text>
+<text x="193" y="217" text-anchor="middle" class="sub">Consultant</text>
+
+<rect class="box" x="255" y="180" width="106" height="55" rx="10" />
+<text x="308" y="202" text-anchor="middle" class="name">Divya Menon</text>
+<text x="308" y="217" text-anchor="middle" class="sub">Consultant</text>
+
+<rect class="box" x="370" y="180" width="106" height="55" rx="10" />
+<text x="423" y="202" text-anchor="middle" class="name">Kabir Singh</text>
+<text x="423" y="217" text-anchor="middle" class="sub">Consultant</text>
+
+<rect class="box" x="485" y="180" width="106" height="55" rx="10" />
+<text x="538" y="202" text-anchor="middle" class="name">Ritu Bhatia</text>
+<text x="538" y="217" text-anchor="middle" class="sub">Assoc. Consultant</text>
+
+<rect class="box" x="600" y="180" width="106" height="55" rx="10" />
+<text x="653" y="202" text-anchor="middle" class="name">Yash Kulkarni</text>
+<text x="653" y="217" text-anchor="middle" class="sub">Assoc. Consultant</text>
+
+<rect class="box" x="715" y="180" width="106" height="55" rx="10" />
+<text x="768" y="202" text-anchor="middle" class="name">Ishaan Chopra</text>
+<text x="768" y="217" text-anchor="middle" class="sub">Analyst</text>
+
+<rect class="box" x="830" y="180" width="106" height="55" rx="10" />
+<text x="883" y="202" text-anchor="middle" class="name">Leela Krishnan</text>
+<text x="883" y="217" text-anchor="middle" class="sub">HR Lead</text>
+
+<text x="480" y="270" text-anchor="middle" class="sub">All 8 report straight to Sameer — nobody in between, unlike Ashoka Textiles' 3-level chain.</text>
+</svg>
