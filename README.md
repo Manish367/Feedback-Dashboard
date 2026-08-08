@@ -139,18 +139,29 @@ Every seeded user's password is `password123`.
 ![Ashoka Textiles org chart](docs/ashoka-textiles-org-chart.svg)
 
 - `ananya.kapoor@ashokatextiles.com` — COO, top of tree
-- `rohan.mehta@ashokatextiles.com` — manages Priya, reports to Ananya
-- `priya.sharma@ashokatextiles.com` — manages 6, reports to Rohan
-- `kavita.nair@ashokatextiles.com` — HR lead
-- 6 more under Priya, e.g. `aditi.joshi@ashokatextiles.com`
+- `rohan.mehta@ashokatextiles.com` — VP Operations, manages Priya, reports to Ananya
+- `kavita.nair@ashokatextiles.com` — HR Lead, reports to Ananya
+- `priya.sharma@ashokatextiles.com` — Team Lead, manages 6, reports to Rohan
+- `aditi.joshi@ashokatextiles.com` — Design Associate, reports to Priya
+- `karan.malhotra@ashokatextiles.com` — Production Associate, reports to Priya
+- `neha.reddy@ashokatextiles.com` — QA Associate, reports to Priya
+- `suresh.pillai@ashokatextiles.com` — Merchandiser, reports to Priya
+- `farah.sheikh@ashokatextiles.com` — Sourcing Associate, reports to Priya
+- `vikram.solanki@ashokatextiles.com` — Logistics Associate, reports to Priya
 
 **Bright Path Consulting** (flat, no middle layer)
 
 ![Bright Path Consulting org chart](docs/bright-path-org-chart.svg)
 
 - `sameer.verma@brightpathconsulting.com` — Founder, manages 8 directly
-- 8 direct reports, e.g. `meera.iyer@brightpathconsulting.com`
-- `leela.krishnan@brightpathconsulting.com` — HR lead (also a direct report)
+- `meera.iyer@brightpathconsulting.com` — Senior Consultant, reports to Sameer
+- `arjun.rao@brightpathconsulting.com` — Consultant, reports to Sameer
+- `divya.menon@brightpathconsulting.com` — Consultant, reports to Sameer
+- `kabir.singh@brightpathconsulting.com` — Consultant, reports to Sameer
+- `ritu.bhatia@brightpathconsulting.com` — Associate Consultant, reports to Sameer
+- `yash.kulkarni@brightpathconsulting.com` — Associate Consultant, reports to Sameer
+- `ishaan.chopra@brightpathconsulting.com` — Analyst, reports to Sameer
+- `leela.krishnan@brightpathconsulting.com` — HR Lead, reports to Sameer (also a direct report)
 
 Seed data spans the last 4 calendar months, with some managers deliberately
 left mid-cycle for the current month so the HR "missing submissions" view has
